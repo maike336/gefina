@@ -8,107 +8,11 @@
     <body>
         <div></div>
 
-        <script
-            crossorigin
-            src='https://unpkg.com/react@18/umd/react.development.js'>
-        </script>
-        <script
-            crossorigin
-            src='https://unpkg.com/react-dom@18/umd/react-dom.development.js'>
-        </script>
-        <script
-            crossorigin
-            src='https://unpkg.com/@babel/standalone/babel.min.js'>
+        <script 
+        type='module' 
+        src='/src/main.tsx'>
         </script>
 
-        <script type='text/babel'>
-            const container = document.querySelector('div');
-
-            const root = ReactDOM.createRoot(container);
-
-            const invoices = [{
-                id: 1,
-                amount: 125039,
-                status: 'pending',
-                issueDate: '2026-10-07',
-                dueDate: '2026-11-05',
-                customer: {
-                    id: 2,
-                    name: 'Construtora Meridiano',
-                    email: 'contato@meridiano.com.br'
-                }
-            }, {
-                id: 2,
-                amount: 15340,
-                status: 'paid',
-                issueDate: '2026-09-03',
-                dueDate: '2026-10-05',
-                customer: {
-                    id: 1,
-                    name: 'Gráfica Nova',
-                    email: 'grafica@nova.com.br'
-                }
-            }, {
-                id: 3,
-                amount: 4504899,
-                status: 'paid',
-                issueDate: '2026-09-01',
-                dueDate: '2026-10-01',
-                customer: {
-                    id: 3,
-                    name: 'Todos por Um',
-                    email: 'comercial@todosporum.com'
-                }
-            }];
-
-            function statusLabel(status) {
-                return status === 'paid' ? 'Paga' : 'Pendente';
-            }
-
-            const Title = () => {
-                return <h1>Faturas</h1>;
-            };
-
-            const TableRow = (props) => {
-                return <tr>
-                    <td>{props.data.customer.name}</td>
-                    <td>{props.data.amount}</td>
-                    <td>{props.data.issueDate}</td>    
-                    <td>{props.data.dueDate}</td>    
-                    <td>{statusLabel(props.data.status)}</td>
-                </tr>;
-            }
-
-            const Table = () => {
-                return <table>
-                    <thead>
-                        <tr>
-                            <th>Cliente</th>
-                            <th>Valor</th>
-                            <th>Emissão</th>
-                            <th>Vencimento</th>
-                            <th>Situação</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {invoices.map((invoice) => {
-                            return <TableRow
-                                key={invoice.id}
-                                data={invoice}
-                            />
-                        })}
-                    </tbody>
-                </table>;
-            };
-
-            const App = () => {
-                return <>
-                    <Title/>
-                    <Table/>
-                </>;
-            }
-
-            root.render(<App/>);
-        </script>
+        
     </body>
 </html>
