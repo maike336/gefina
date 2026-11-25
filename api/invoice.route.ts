@@ -4,6 +4,8 @@ import { findAllInvoices, findInvoiceById } from './invoice.service.ts';
 
 const router = Router();
 
+// localhost:3000/api/invoices/
+
 router.get('/', (_request, response) => {
   const invoices = findAllInvoices();
 

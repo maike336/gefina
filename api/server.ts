@@ -2,6 +2,8 @@ import express from 'express';
 
 import InvoiceRouter from './invoice.route.ts';
 
+import { join } from 'node:path';
+
 const app = express();
 
 app.get('/api/health', (_request, response) => {
@@ -15,6 +17,8 @@ app.get('/api/health', (_request, response) => {
 
 app.use('/api/invoices', InvoiceRouter);
 
+app.use(express.static(join(import.meta.dirname, '..', './web', './dist')));
+
 app.use((_request, response) => {
   response.status(404).json({
     error: {
@@ -24,4 +28,4 @@ app.use((_request, response) => {
   });
 });
 
-app.listen(3000);
+app.listen(Number(process.env.PORT))
